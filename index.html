@@ -1246,6 +1246,21 @@
     }
   }
 
+  var skipTimer = null;
+
+  function advanceCard(card, timer, ring, countdown) {
+    if (skipTimer) { clearTimeout(skipTimer); skipTimer = null; }
+    if (countdown) clearInterval(countdown);
+    timer.classList.remove('show');
+    ring.classList.remove('animate');
+    card.classList.remove('active');
+    card.classList.add('exit');
+    currentCard++;
+    setTimeout(function() {
+      showCard(currentCard);
+    }, 500);
+  }
+
   function revealCard(index) {
     if (isAnimating) return;
     isAnimating = true;
@@ -1259,6 +1274,7 @@
     var timer = document.getElementById('nextTimer');
     var ring = document.getElementById('timerRing');
     var label = document.getElementById('timerLabel');
+    var countdownId = null;
 
     setTimeout(function() {
       timer.classList.add('show');
@@ -1269,27 +1285,24 @@
 
       var remaining = Math.ceil(HOLD_TIME / 1000);
       label.textContent = remaining;
-      var countdown = setInterval(function() {
+      countdownId = setInterval(function() {
         remaining--;
         if (remaining > 0) {
           label.textContent = remaining;
         } else {
-          clearInterval(countdown);
+          clearInterval(countdownId);
           label.textContent = '';
         }
       }, 1000);
 
-      setTimeout(function() {
-        timer.classList.remove('show');
-        ring.classList.remove('animate');
-        card.classList.remove('active');
-        card.classList.add('exit');
-
-        currentCard++;
-        setTimeout(function() {
-          showCard(currentCard);
-        }, 500);
+      skipTimer = setTimeout(function() {
+        advanceCard(card, timer, ring, countdownId);
       }, HOLD_TIME);
+
+      card.addEventListener('click', function onSkip() {
+        card.removeEventListener('click', onSkip);
+        advanceCard(card, timer, ring, countdownId);
+      });
     }, 800);
   }
 
