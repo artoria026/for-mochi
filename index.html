@@ -554,6 +554,64 @@
     100% { opacity: 0; transform: translate(var(--bx), var(--by)) scale(0); }
   }
 
+  .next-timer {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 44px; height: 44px;
+    z-index: 25;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  .next-timer.show {
+    opacity: 1;
+  }
+
+  .next-timer svg {
+    width: 44px; height: 44px;
+    transform: rotate(-90deg);
+  }
+
+  .next-timer-bg {
+    fill: none;
+    stroke: rgba(255,255,255,0.1);
+    stroke-width: 3;
+  }
+
+  .next-timer-ring {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 113;
+    stroke-dashoffset: 113;
+    filter: drop-shadow(0 0 4px var(--gold-glow));
+  }
+
+  .next-timer-ring.animate {
+    animation: timerFill var(--timer-dur, 7s) linear both;
+  }
+
+  @keyframes timerFill {
+    from { stroke-dashoffset: 113; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  .next-timer-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, sans-serif;
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.05em;
+  }
+
   .summary-section {
     display: none;
     flex-direction: column;
@@ -1022,6 +1080,13 @@
     </div>
 
     <div class="particle-burst" id="particleBurst"></div>
+    <div class="next-timer" id="nextTimer">
+      <svg viewBox="0 0 40 40">
+        <circle class="next-timer-bg" cx="20" cy="20" r="18"></circle>
+        <circle class="next-timer-ring" id="timerRing" cx="20" cy="20" r="18"></circle>
+      </svg>
+      <span class="next-timer-label" id="timerLabel"></span>
+    </div>
   </div>
 
   <div class="summary-section" id="summary">
@@ -1184,14 +1249,39 @@
   function revealCard(index) {
     if (isAnimating) return;
     isAnimating = true;
+    var HOLD_TIME = 7000;
 
     var card = cards[index];
     card.classList.add('revealing');
     triggerFlash();
     triggerBurst();
 
+    var timer = document.getElementById('nextTimer');
+    var ring = document.getElementById('timerRing');
+    var label = document.getElementById('timerLabel');
+
     setTimeout(function() {
+      timer.classList.add('show');
+      ring.classList.remove('animate');
+      void ring.offsetWidth;
+      ring.style.setProperty('--timer-dur', HOLD_TIME + 'ms');
+      ring.classList.add('animate');
+
+      var remaining = Math.ceil(HOLD_TIME / 1000);
+      label.textContent = remaining;
+      var countdown = setInterval(function() {
+        remaining--;
+        if (remaining > 0) {
+          label.textContent = remaining;
+        } else {
+          clearInterval(countdown);
+          label.textContent = '';
+        }
+      }, 1000);
+
       setTimeout(function() {
+        timer.classList.remove('show');
+        ring.classList.remove('animate');
         card.classList.remove('active');
         card.classList.add('exit');
 
@@ -1199,8 +1289,8 @@
         setTimeout(function() {
           showCard(currentCard);
         }, 500);
-      }, 1400);
-    }, 200);
+      }, HOLD_TIME);
+    }, 800);
   }
 
   function showSummary() {
