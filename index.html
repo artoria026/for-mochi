@@ -32,7 +32,6 @@
     overflow-x: hidden;
   }
 
-  /* ========== PETALS ========== */
   .petals-container {
     position: fixed;
     top: 0; left: 0;
@@ -58,7 +57,6 @@
     100% { transform: translateY(105vh) rotate(720deg) translateX(80px); opacity: 0; }
   }
 
-  /* ========== HERO ========== */
   .hero {
     position: relative;
     min-height: 100vh;
@@ -144,7 +142,6 @@
     50% { transform: translateY(8px); }
   }
 
-  /* ========== MESSAGE ========== */
   .message-section {
     padding: 100px 24px;
     max-width: 680px;
@@ -180,7 +177,6 @@
   .message-body p { margin-bottom: 20px; }
   .message-body p:last-child { margin-bottom: 0; }
 
-  /* ========== COUPONS ARENA ========== */
   .coupons-arena {
     position: relative;
     min-height: 100vh;
@@ -272,7 +268,6 @@
     z-index: 5;
   }
 
-  /* ========== CARD STAGE ========== */
   .card-stage {
     position: relative;
     width: 300px; height: 420px;
@@ -520,7 +515,6 @@
     filter: blur(10px);
   }
 
-  /* ========== FLASH OVERLAY ========== */
   .flash-overlay {
     position: fixed;
     inset: 0;
@@ -539,7 +533,6 @@
     100% { opacity: 0; }
   }
 
-  /* ========== PARTICLE BURST ========== */
   .particle-burst {
     position: absolute;
     top: 50%; left: 50%;
@@ -560,7 +553,6 @@
     100% { opacity: 0; transform: translate(var(--bx), var(--by)) scale(0); }
   }
 
-  /* ========== SUMMARY ========== */
   .summary-section {
     display: none;
     flex-direction: column;
@@ -689,7 +681,153 @@
     100% { opacity: 1; transform: scale(1); }
   }
 
-  /* ========== CLOSING ========== */
+  .astro-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse at 50% 30%, #0c1023 0%, #060810 60%, #020204 100%);
+    overflow: hidden;
+    padding: 100px 24px;
+  }
+
+  /* Static twinkling stars */
+  .astro-stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .astro-star {
+    position: absolute;
+    border-radius: 50%;
+    background: #fff;
+    animation: twinkle var(--tw-dur, 3s) ease-in-out var(--tw-delay, 0s) infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: var(--tw-min, 0.15); transform: scale(1); }
+    50% { opacity: var(--tw-max, 0.9); transform: scale(1.3); }
+  }
+
+  /* Shooting stars */
+  .astro-shooting-stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .shooting-star {
+    position: absolute;
+    width: 3px; height: 3px;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0;
+    animation: shoot var(--ss-dur, 1.2s) ease-out var(--ss-delay, 0s) infinite;
+  }
+
+  .shooting-star::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 80px; height: 1.5px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.7), transparent);
+    transform: translateX(100%);
+    border-radius: 100px;
+  }
+
+  @keyframes shoot {
+    0% { opacity: 0; transform: translate(0, 0) rotate(-35deg); }
+    5% { opacity: 1; }
+    60% { opacity: 0.6; }
+    100% { opacity: 0; transform: translate(-350px, 200px) rotate(-35deg); }
+  }
+
+  /* Nebula glow */
+  .astro-nebula {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    opacity: 0.06;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+
+  .astro-nebula--1 {
+    top: -15%; left: -10%;
+    background: radial-gradient(circle, #4a6fa5 0%, transparent 70%);
+    animation: nebulaFloat 12s ease-in-out infinite;
+  }
+
+  .astro-nebula--2 {
+    bottom: -20%; right: -10%;
+    background: radial-gradient(circle, #8a5aa5 0%, transparent 70%);
+    animation: nebulaFloat 10s ease-in-out 3s infinite;
+  }
+
+  @keyframes nebulaFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(20px, -15px) scale(1.08); }
+  }
+
+  /* Content */
+  .astro-divider {
+    font-size: 1.4rem;
+    color: rgba(180, 200, 255, 0.4);
+    margin-bottom: 40px;
+    letter-spacing: 0.6em;
+    opacity: 0;
+    position: relative; z-index: 2;
+  }
+
+  .astro-divider.visible { animation: fadeInUp 0.8s ease-out both; }
+
+  .astro-title {
+    font-size: 2rem;
+    font-weight: normal;
+    color: rgba(210, 220, 255, 0.9);
+    margin-bottom: 40px;
+    line-height: 1.4;
+    opacity: 0;
+    position: relative; z-index: 2;
+    text-shadow: 0 0 30px rgba(120, 140, 255, 0.2);
+  }
+
+  .astro-title.visible { animation: fadeInUp 0.8s ease-out 0.15s both; }
+
+  .astro-body {
+    font-family: 'Georgia', serif;
+    font-size: 1.1rem;
+    line-height: 2.2;
+    color: rgba(200, 210, 240, 0.7);
+    text-align: center;
+    max-width: 620px;
+    opacity: 0;
+    position: relative; z-index: 2;
+  }
+
+  .astro-body.visible { animation: fadeInUp 0.8s ease-out 0.3s both; }
+
+  .astro-body p {
+    margin-bottom: 28px;
+  }
+
+  .astro-body p:last-child { margin-bottom: 0; }
+
+  .astro-body em {
+    color: rgba(232, 196, 124, 0.8);
+    font-style: italic;
+  }
+
+  @media (max-width: 600px) {
+    .astro-section { padding: 72px 20px; }
+    .astro-title { font-size: 1.6rem; }
+    .astro-body { font-size: 1rem; line-height: 2; }
+  }
+
   .closing-section {
     padding: 100px 24px 80px;
     text-align: center;
@@ -722,7 +860,6 @@
 
   .closing-bottom-floral.visible { animation: fadeInUp 0.8s ease-out 0.6s both; }
 
-  /* ========== RESPONSIVE ========== */
   @media (max-width: 600px) {
     .hero-photo-wrapper { width: 180px; height: 180px; }
     .hero-name { font-size: 2.6rem; }
@@ -740,13 +877,9 @@
 </head>
 <body>
 
-<!-- Flash overlay -->
 <div class="flash-overlay" id="flashOverlay"></div>
-
-<!-- Falling petals -->
 <div class="petals-container" id="petals"></div>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-photo-wrapper">
     <img src="./mochi.jpg" alt="Mochi" onerror="this.parentElement.innerHTML='<div class=\'hero-photo-fallback\'>&#x2661;</div>'">
@@ -761,7 +894,6 @@
   </div>
 </section>
 
-<!-- MESSAGE -->
 <section class="message-section">
   <div class="floral-divider" data-animate>&#x273F; &#x2022; &#x273F;</div>
   <h2 class="message-title" data-animate>Para ti, en tu día</h2>
@@ -783,9 +915,7 @@
   </div>
 </section>
 
-<!-- COUPONS ARENA -->
 <section class="coupons-arena" id="arena">
-  <!-- Ambient -->
   <div class="arena-bg-particles" id="bgParticles"></div>
   <div class="arena-glow" style="top: -20%; left: -10%;"></div>
   <div class="arena-glow" style="bottom: -20%; right: -10%; animation-delay: 2s;"></div>
@@ -794,7 +924,6 @@
   <p class="arena-subtitle" id="arenaSub">Toca la carta para abrirla</p>
   <span class="arena-counter" id="arenaCounter"></span>
 
-  <!-- Card stage — one card at a time -->
   <div class="card-stage" id="cardStage">
     <div class="lol-card" id="card0" data-icon="💆" data-text="Masaje de cuerpo completo — cuando quieras, sin que tengas que pedirlo dos veces">
       <div class="lol-card-inner">
@@ -894,7 +1023,6 @@
     <div class="particle-burst" id="particleBurst"></div>
   </div>
 
-  <!-- Summary after all opened -->
   <div class="summary-section" id="summary">
     <h3 class="summary-header">Todos tus regalos</h3>
     <p class="summary-sub">Válidos por siempre, sin fecha de vencimiento</p>
@@ -906,7 +1034,50 @@
   </div>
 </section>
 
-<!-- CLOSING -->
+<section class="astro-section" id="astroSection">
+  <div class="astro-stars" id="astroStars"></div>
+  <div class="astro-shooting-stars" id="astroShootingStars"></div>
+  <div class="astro-nebula astro-nebula--1"></div>
+  <div class="astro-nebula astro-nebula--2"></div>
+
+  <div class="astro-divider" data-animate>&#x2729; &middot; &#x2729; &middot; &#x2729;</div>
+  <h2 class="astro-title" data-animate>Como las estrellas</h2>
+  <div class="astro-body" data-animate>
+    <p>
+      Si el universo se expande cada segundo,<br>
+      entonces lo que siento por ti<br>
+      no tiene orilla ni final.
+    </p>
+    <p>
+      No soy astrónomo ni poeta —<br>
+      pero siempre supe medirte en planetas.<br>
+      En distancias que no caben en números.<br>
+      En algo más grande que cualquier cosa<br>
+      que yo pudiera señalar con el dedo en el cielo.
+    </p>
+    <p>
+      Eres la estrella que yo elijo ver<br>
+      entre millones que parpadean.<br>
+      La única que no tengo que buscar<br>
+      porque <em>siempre me encuentra</em>.
+    </p>
+    <p>
+      Y si algún día la gravedad se rinde<br>
+      y todo deja de girar,<br>
+      yo seguiría orbitando alrededor de ti.
+    </p>
+    <p>
+      Porque tú no eres una estrella fugaz —<br>
+      eres la constelación entera<br>
+      que le da forma a mi cielo.
+    </p>
+    <p>
+      Mi mochi de sandía. 🍉<br>
+      <em>Por el tamaño del universo, y lo que sigue.</em>
+    </p>
+  </div>
+</section>
+
 <section class="closing-section">
   <div class="closing-floral" data-animate>&#x2740;</div>
   <p class="closing-text" data-animate>
@@ -919,7 +1090,6 @@
 
 <script>
 (function() {
-  // ===== Petals =====
   var petalsContainer = document.getElementById('petals');
   var petalColors = ['#f2c4c4','#e8a0a0','#d5c6e0','#f7d6d6','#c9b8d9','#dde8d0'];
   for (var i = 0; i < 18; i++) {
@@ -935,7 +1105,6 @@
     petalsContainer.appendChild(p);
   }
 
-  // ===== Scroll animations =====
   var animEls = document.querySelectorAll('[data-animate]');
   var obs = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
@@ -944,7 +1113,6 @@
   }, { threshold: 0.15 });
   animEls.forEach(function(el) { obs.observe(el); });
 
-  // ===== Background particles =====
   var bgContainer = document.getElementById('bgParticles');
   for (var j = 0; j < 30; j++) {
     var bp = document.createElement('div');
@@ -958,7 +1126,6 @@
     bgContainer.appendChild(bp);
   }
 
-  // ===== Coupon Arena Logic =====
   var cards = [];
   for (var c = 0; c < 5; c++) {
     cards.push(document.getElementById('card'+c));
@@ -1023,7 +1190,6 @@
     triggerBurst();
 
     setTimeout(function() {
-      // After reveal pause, exit card and show next
       setTimeout(function() {
         card.classList.remove('active');
         card.classList.add('exit');
@@ -1061,7 +1227,6 @@
       item.style.animationDelay = (0.15*i)+'s';
       list.appendChild(item);
 
-      // Stagger reveal
       (function(el, delay) {
         setTimeout(function() { el.classList.add('show'); }, delay);
       })(item, 300 + i*200);
@@ -1076,7 +1241,6 @@
     }, 300 + 5*200 + 600);
   }
 
-  // Click handler for cards
   for (var k = 0; k < 5; k++) {
     (function(idx) {
       cards[idx].addEventListener('click', function() {
@@ -1087,7 +1251,48 @@
     })(k);
   }
 
-  // Start arena when scrolled into view
+  var astroStarsContainer = document.getElementById('astroStars');
+  var astroShootingContainer = document.getElementById('astroShootingStars');
+
+  for (var s = 0; s < 120; s++) {
+    var star = document.createElement('div');
+    star.className = 'astro-star';
+    var sz = (1 + Math.random() * 2.5) + 'px';
+    star.style.width = sz;
+    star.style.height = sz;
+    star.style.left = (Math.random() * 100) + '%';
+    star.style.top = (Math.random() * 100) + '%';
+    star.style.setProperty('--tw-dur', (2 + Math.random() * 5) + 's');
+    star.style.setProperty('--tw-delay', (Math.random() * 6) + 's');
+    star.style.setProperty('--tw-min', (0.1 + Math.random() * 0.2).toFixed(2));
+    star.style.setProperty('--tw-max', (0.6 + Math.random() * 0.4).toFixed(2));
+    astroStarsContainer.appendChild(star);
+  }
+
+  for (var ss = 0; ss < 5; ss++) {
+    var shootingStar = document.createElement('div');
+    shootingStar.className = 'shooting-star';
+    shootingStar.style.left = (20 + Math.random() * 70) + '%';
+    shootingStar.style.top = (5 + Math.random() * 40) + '%';
+    shootingStar.style.setProperty('--ss-dur', (1 + Math.random() * 0.8) + 's');
+    shootingStar.style.setProperty('--ss-delay', (2 + ss * 4 + Math.random() * 3) + 's');
+    astroShootingContainer.appendChild(shootingStar);
+  }
+
+  var petalsEl = document.getElementById('petals');
+  var astroVisObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        petalsEl.style.opacity = '0';
+        petalsEl.style.transition = 'opacity 1s ease';
+      } else {
+        petalsEl.style.opacity = '1';
+        petalsEl.style.transition = 'opacity 1s ease';
+      }
+    });
+  }, { threshold: 0.15 });
+  astroVisObs.observe(document.getElementById('astroSection'));
+
   var arenaObs = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
       if (e.isIntersecting && !arenaStarted) {
