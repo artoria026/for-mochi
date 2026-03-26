@@ -794,7 +794,105 @@
   <p class="arena-subtitle" id="arenaSub">Toca la carta para abrirla</p>
   <span class="arena-counter" id="arenaCounter"></span>
 
-  
+  <!-- Card stage — one card at a time -->
+  <div class="card-stage" id="cardStage">
+    <div class="lol-card" id="card0" data-icon="💆" data-text="Masaje de cuerpo completo — cuando quieras, sin que tengas que pedirlo dos veces">
+      <div class="lol-card-inner">
+        <div class="lol-front">
+          <div class="lol-front-border"></div>
+          <div class="lol-front-shimmer"></div>
+          <span class="lol-front-icon">💆</span>
+          <span class="lol-front-number">CUPÓN 01 / 05</span>
+          <span class="lol-front-label">Abrir regalo</span>
+          <span class="lol-front-cta">toca para revelar</span>
+        </div>
+        <div class="lol-back">
+          <span class="lol-back-icon">💆</span>
+          <p class="lol-back-text">Masaje de cuerpo completo — cuando quieras, sin que tengas que pedirlo dos veces</p>
+          <p class="lol-back-valid">Válido por siempre ♥</p>
+          <div class="lol-back-glow"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lol-card" id="card1" data-icon="🎨" data-text="Un día a donde tú digas — museo, mercado, parque, lo que sea, yo voy feliz">
+      <div class="lol-card-inner">
+        <div class="lol-front">
+          <div class="lol-front-border"></div>
+          <div class="lol-front-shimmer"></div>
+          <span class="lol-front-icon">🎨</span>
+          <span class="lol-front-number">CUPÓN 02 / 05</span>
+          <span class="lol-front-label">Abrir regalo</span>
+          <span class="lol-front-cta">toca para revelar</span>
+        </div>
+        <div class="lol-back">
+          <span class="lol-back-icon">🎨</span>
+          <p class="lol-back-text">Un día a donde tú digas — museo, mercado, parque, lo que sea, yo voy feliz</p>
+          <p class="lol-back-valid">Válido por siempre ♥</p>
+          <div class="lol-back-glow"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lol-card" id="card2" data-icon="🕯️" data-text="Una noche donde tú decides todo — cómo empieza, cómo sigue y cómo termina. Yo solo estoy ahí para cumplirlo.">
+      <div class="lol-card-inner">
+        <div class="lol-front">
+          <div class="lol-front-border"></div>
+          <div class="lol-front-shimmer"></div>
+          <span class="lol-front-icon">🕯️</span>
+          <span class="lol-front-number">CUPÓN 03 / 05</span>
+          <span class="lol-front-label">Abrir regalo</span>
+          <span class="lol-front-cta">toca para revelar</span>
+        </div>
+        <div class="lol-back">
+          <span class="lol-back-icon">🕯️</span>
+          <p class="lol-back-text">Una noche donde tú decides todo — cómo empieza, cómo sigue y cómo termina. Yo solo estoy ahí para cumplirlo.</p>
+          <p class="lol-back-valid">Válido por siempre ♥</p>
+          <div class="lol-back-glow"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lol-card" id="card3" data-icon="🔑" data-text="Un deseo sin límite — lo que quieras pedirme y nunca te has atrevido. Este cupón lo hace válido.">
+      <div class="lol-card-inner">
+        <div class="lol-front">
+          <div class="lol-front-border"></div>
+          <div class="lol-front-shimmer"></div>
+          <span class="lol-front-icon">🔑</span>
+          <span class="lol-front-number">CUPÓN 04 / 05</span>
+          <span class="lol-front-label">Abrir regalo</span>
+          <span class="lol-front-cta">toca para revelar</span>
+        </div>
+        <div class="lol-back">
+          <span class="lol-back-icon">🔑</span>
+          <p class="lol-back-text">Un deseo sin límite — lo que quieras pedirme y nunca te has atrevido. Este cupón lo hace válido.</p>
+          <p class="lol-back-valid">Válido por siempre ♥</p>
+          <div class="lol-back-glow"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lol-card" id="card4" data-icon="🍉" data-text="Este cupón no se canjea — solo existe para recordarte que eres mi mochi de sandía, por el tamaño del universo y lo que sigue">
+      <div class="lol-card-inner">
+        <div class="lol-front">
+          <div class="lol-front-border"></div>
+          <div class="lol-front-shimmer"></div>
+          <span class="lol-front-icon">🍉</span>
+          <span class="lol-front-number">CUPÓN 05 / 05</span>
+          <span class="lol-front-label">Abrir regalo</span>
+          <span class="lol-front-cta">toca para revelar</span>
+        </div>
+        <div class="lol-back">
+          <span class="lol-back-icon">🍉</span>
+          <p class="lol-back-text">Este cupón no se canjea — solo existe para recordarte que eres mi mochi de sandía, por el tamaño del universo y lo que sigue</p>
+          <p class="lol-back-valid">♥</p>
+          <div class="lol-back-glow"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="particle-burst" id="particleBurst"></div>
+  </div>
 
   <!-- Summary after all opened -->
   <div class="summary-section" id="summary">
@@ -862,7 +960,7 @@
 
   // ===== Coupon Arena Logic =====
   var cards = [];
-  for (var c = 0; c < 6; c++) {
+  for (var c = 0; c < 5; c++) {
     cards.push(document.getElementById('card'+c));
   }
   var currentCard = 0;
@@ -877,11 +975,11 @@
   var arenaStarted = false;
 
   function updateCounter() {
-    counter.textContent = (currentCard+1) + ' / 6';
+    counter.textContent = (currentCard+1) + ' / 5';
   }
 
   function showCard(index) {
-    if (index >= 6) {
+    if (index >= 5) {
       showSummary();
       return;
     }
@@ -949,7 +1047,7 @@
     var list = document.getElementById('summaryList');
     list.innerHTML = '';
 
-    for (var i = 0; i < 6; i++) {
+    for (var i = 0; i < 5; i++) {
       var card = cards[i];
       var icon = card.getAttribute('data-icon');
       var text = card.getAttribute('data-text');
@@ -971,15 +1069,15 @@
 
     setTimeout(function() {
       document.getElementById('summaryHeart').classList.add('show');
-    }, 300 + 6*200 + 200);
+    }, 300 + 5*200 + 200);
 
     setTimeout(function() {
       document.getElementById('summaryScreenshot').classList.add('show');
-    }, 300 + 6*200 + 600);
+    }, 300 + 5*200 + 600);
   }
 
   // Click handler for cards
-  for (var k = 0; k < 6; k++) {
+  for (var k = 0; k < 5; k++) {
     (function(idx) {
       cards[idx].addEventListener('click', function() {
         if (cards[idx].classList.contains('active') && !isAnimating) {
