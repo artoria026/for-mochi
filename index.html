@@ -658,6 +658,31 @@
     animation: heartPop 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
   }
 
+  .summary-screenshot {
+    margin-top: 28px;
+    padding: 14px 24px;
+    background: rgba(232,196,124,0.08);
+    border: 1px dashed rgba(232,196,124,0.3);
+    border-radius: 12px;
+    text-align: center;
+    opacity: 0;
+  }
+
+  .summary-screenshot.show {
+    animation: fadeInUp 0.6s ease-out both;
+  }
+
+  .summary-screenshot p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.45);
+    font-family: -apple-system, sans-serif;
+    line-height: 1.6;
+  }
+
+  .summary-screenshot span {
+    color: var(--gold);
+  }
+
   @keyframes heartPop {
     0% { opacity: 0; transform: scale(0); }
     50% { transform: scale(1.4); }
@@ -726,8 +751,9 @@
   <div class="hero-photo-wrapper">
     <img src="./mochi.jpg" alt="Mochi" onerror="this.parentElement.innerHTML='<div class=\'hero-photo-fallback\'>&#x2661;</div>'">
   </div>
-  <h1 class="hero-name">Mochi</h1>
-  <p class="hero-subtitle">Feliz cumpleaños, mi amor</p>
+  <h1 class="hero-name">Mochi de sandía</h1>
+  <p class="hero-subtitle">Feliz cumpleaños, amor con tui</p>
+  <h1 class="hero-name">🍉</h1>
   <div class="scroll-hint">
     <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <polyline points="6 9 12 15 18 9"></polyline>
@@ -741,25 +767,18 @@
   <h2 class="message-title" data-animate>Para ti, en tu día</h2>
   <div class="message-body" data-animate>
     <p>
-      Hay cosas que no sé decir en voz alta sin que se me quiebre un poco la voz.
-      Así que las escribo acá, donde puedo ser honesto sin esconderme.
+      Oficialmente un año más de ser la persona más Mochi de sandía que conozco. 🍉
     </p>
     <p>
-      No sé en qué momento dejaste de ser una persona más para convertirte en mi persona favorita.
-      La que quiero ver cuando algo bueno me pasa. La primera a la que quiero contarle cuando algo me duele.
-      La que me hace reír con las cosas más tontas, y a la que quisiera abrazar en cada silencio.
+      Y yo no quiero dejarlo pasar sin decirte algo que a veces se me queda atorado entre la cabeza y la boca: gracias. <br>
+      Gracias por existir, por quedarte, por elegirme todos los días aunque no siempre lo haga fácil.
     </p>
     <p>
-      Me gusta cómo sos. Me gusta tu risa, me gustan tus manías, me gusta que me entiendas
-      sin que tenga que explicar mucho. Me gusta que existas y que —de todas las vidas posibles—
-      la mía se haya cruzado con la tuya.
+      Hoy cumples años y yo solo puedo pensar en lo mucho que te amo, no un poco, no a ratos. <br>
+      Todo el tiempo, con todo lo que soy.
     </p>
     <p>
-      Hoy es tu cumpleaños y lo único que quiero es que sepas esto:
-      estoy acá. Hoy y todos los días que vengan. Con ganas, con amor, con todo lo que tengo.
-    </p>
-    <p>
-      Feliz cumpleaños, Mochi. Gracias por ser tanto.
+      Feliz cumpleaños amor, hoy y todos los días que vengan..
     </p>
   </div>
 </section>
@@ -771,129 +790,11 @@
   <div class="arena-glow" style="top: -20%; left: -10%;"></div>
   <div class="arena-glow" style="bottom: -20%; right: -10%; animation-delay: 2s;"></div>
 
-  <h2 class="arena-title" id="arenaTitle">Tus regalos</h2>
+  <h2 class="arena-title" id="arenaTitle">Sus regalos de Mochi</h2>
   <p class="arena-subtitle" id="arenaSub">Toca la carta para abrirla</p>
   <span class="arena-counter" id="arenaCounter"></span>
 
-  <!-- Card stage — one card at a time -->
-  <div class="card-stage" id="cardStage">
-
-    <div class="lol-card" id="card0" data-icon="✨" data-text="1 petición sin rechitar — lo que sea, cuando quieras">
-      <div class="lol-card-inner">
-        <div class="lol-front">
-          <div class="lol-front-border"></div>
-          <div class="lol-front-shimmer"></div>
-          <span class="lol-front-icon">✨</span>
-          <span class="lol-front-number">CUPÓN 01 / 06</span>
-          <span class="lol-front-label">Abrir regalo</span>
-          <span class="lol-front-cta">toca para revelar</span>
-        </div>
-        <div class="lol-back">
-          <span class="lol-back-icon">✨</span>
-          <p class="lol-back-text">1 petición sin rechitar — lo que sea, cuando quieras</p>
-          <p class="lol-back-valid">Válido por siempre ♥</p>
-          <div class="lol-back-glow"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="lol-card" id="card1" data-icon="💆" data-text="Masaje de espalda completo, a pedido">
-      <div class="lol-card-inner">
-        <div class="lol-front">
-          <div class="lol-front-border"></div>
-          <div class="lol-front-shimmer"></div>
-          <span class="lol-front-icon">💆</span>
-          <span class="lol-front-number">CUPÓN 02 / 06</span>
-          <span class="lol-front-label">Abrir regalo</span>
-          <span class="lol-front-cta">toca para revelar</span>
-        </div>
-        <div class="lol-back">
-          <span class="lol-back-icon">💆</span>
-          <p class="lol-back-text">Masaje de espalda completo, a pedido</p>
-          <p class="lol-back-valid">Válido por siempre ♥</p>
-          <div class="lol-back-glow"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="lol-card" id="card2" data-icon="🎬" data-text="Noche de películas a tu elección, sin quejas">
-      <div class="lol-card-inner">
-        <div class="lol-front">
-          <div class="lol-front-border"></div>
-          <div class="lol-front-shimmer"></div>
-          <span class="lol-front-icon">🎬</span>
-          <span class="lol-front-number">CUPÓN 03 / 06</span>
-          <span class="lol-front-label">Abrir regalo</span>
-          <span class="lol-front-cta">toca para revelar</span>
-        </div>
-        <div class="lol-back">
-          <span class="lol-back-icon">🎬</span>
-          <p class="lol-back-text">Noche de películas a tu elección, sin quejas</p>
-          <p class="lol-back-valid">Válido por siempre ♥</p>
-          <div class="lol-back-glow"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="lol-card" id="card3" data-icon="☕" data-text="Un desayuno hecho con amor">
-      <div class="lol-card-inner">
-        <div class="lol-front">
-          <div class="lol-front-border"></div>
-          <div class="lol-front-shimmer"></div>
-          <span class="lol-front-icon">☕</span>
-          <span class="lol-front-number">CUPÓN 04 / 06</span>
-          <span class="lol-front-label">Abrir regalo</span>
-          <span class="lol-front-cta">toca para revelar</span>
-        </div>
-        <div class="lol-back">
-          <span class="lol-back-icon">☕</span>
-          <p class="lol-back-text">Un desayuno hecho con amor</p>
-          <p class="lol-back-valid">Válido por siempre ♥</p>
-          <div class="lol-back-glow"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="lol-card" id="card4" data-icon="💛" data-text="1 día 100% presente, sin teléfono">
-      <div class="lol-card-inner">
-        <div class="lol-front">
-          <div class="lol-front-border"></div>
-          <div class="lol-front-shimmer"></div>
-          <span class="lol-front-icon">💛</span>
-          <span class="lol-front-number">CUPÓN 05 / 06</span>
-          <span class="lol-front-label">Abrir regalo</span>
-          <span class="lol-front-cta">toca para revelar</span>
-        </div>
-        <div class="lol-back">
-          <span class="lol-back-icon">💛</span>
-          <p class="lol-back-text">1 día 100% presente, sin teléfono</p>
-          <p class="lol-back-valid">Válido por siempre ♥</p>
-          <div class="lol-back-glow"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="lol-card" id="card5" data-icon="✍️" data-text="Una carta escrita a mano, cuando la pidas">
-      <div class="lol-card-inner">
-        <div class="lol-front">
-          <div class="lol-front-border"></div>
-          <div class="lol-front-shimmer"></div>
-          <span class="lol-front-icon">✍️</span>
-          <span class="lol-front-number">CUPÓN 06 / 06</span>
-          <span class="lol-front-label">Abrir regalo</span>
-          <span class="lol-front-cta">toca para revelar</span>
-        </div>
-        <div class="lol-back">
-          <span class="lol-back-icon">✍️</span>
-          <p class="lol-back-text">Una carta escrita a mano, cuando la pidas</p>
-          <p class="lol-back-valid">Válido por siempre ♥</p>
-          <div class="lol-back-glow"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="particle-burst" id="particleBurst"></div>
-  </div>
+  
 
   <!-- Summary after all opened -->
   <div class="summary-section" id="summary">
@@ -901,6 +802,9 @@
     <p class="summary-sub">Válidos por siempre, sin fecha de vencimiento</p>
     <div class="summary-list" id="summaryList"></div>
     <div class="summary-heart" id="summaryHeart">♥</div>
+    <div class="summary-screenshot" id="summaryScreenshot">
+      <p>📸 <span>Tomá una captura de pantalla</span> y enviámela para hacer válido tu cupón</p>
+    </div>
   </div>
 </section>
 
@@ -908,10 +812,10 @@
 <section class="closing-section">
   <div class="closing-floral" data-animate>&#x2740;</div>
   <p class="closing-text" data-animate>
-    No necesito un día especial para quererte.<br>
-    Pero hoy es una buena excusa para recordártelo.
+    No necesito que sea tu cumpleaños para quererte.<br>
+    Pero hoy es una buena excusa recordártelo.
   </p>
-  <p class="closing-sig" data-animate>Con todo mi amor — siempre.</p>
+  <p class="closing-sig" data-animate>— Tu Mochi Siempre.</p>
   <div class="closing-bottom-floral" data-animate>&#x2698; &#x2022; &#x2698;</div>
 </section>
 
@@ -1068,6 +972,10 @@
     setTimeout(function() {
       document.getElementById('summaryHeart').classList.add('show');
     }, 300 + 6*200 + 200);
+
+    setTimeout(function() {
+      document.getElementById('summaryScreenshot').classList.add('show');
+    }, 300 + 6*200 + 600);
   }
 
   // Click handler for cards
